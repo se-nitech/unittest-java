@@ -3,4 +3,5 @@ services:
     build: ./
     volumes:
       - ./:/mnt
+    command: ["tail", "-f", "/dev/null"]
     tty: true
