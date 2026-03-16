@@ -11,9 +11,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>25</maven.compiler.release>
         <junit.version>5.12.2</junit.version>
-        <mockito.version>5.16.1</mockito.version>
+        <mockito.version>5.23.0</mockito.version>
+        <jacoco.version>0.8.14</jacoco.version>
     </properties>
 
     <dependencies>
@@ -52,7 +53,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
+                <version>${jacoco.version}</version>
                 <executions>
                     <execution>
                         <goals>
