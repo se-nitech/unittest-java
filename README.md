@@ -6,6 +6,12 @@
 docker compose build
 ```
 
+コードのビルド
+
+```bash
+docker compose run --rm myjava mvn package
+```
+
 テスト実行（JUnit + Mockito）
 
 ```bash
