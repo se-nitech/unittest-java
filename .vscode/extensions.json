@@ -2,13 +2,6 @@
     "recommendations": [
         "mhutchie.git-graph",
         "ms-ceintl.vscode-language-pack-ja",
-        "ms-python.autopep8",
-        "ms-python.black-formatter",
-        "ms-python.flake8",
-        "ms-python.pylint",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-vscode.live-server",
-        "ryanluker.vscode-coverage-gutters",
+        "vscjava.vscode-java-pack",
     ]
 }

@@ -13,32 +13,18 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     //
-    "python.defaultInterpreterPath": "/usr/local/bin/python",
-    "[python]": {
-        // "editor.defaultFormatter": "ms-python.black-formatter",
-        // "editor.defaultFoldingRangeProvider": "ms-python.python",
-        "editor.defaultFormatter": "ms-python.autopep8",
-        "editor.formatOnType": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "never"
-        }
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java",
+        "editor.insertSpaces": true
     },
-    // unittest
-    "python.testing.unittestEnabled": false,
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        ".",
-        "-p",
-        "test*.py"
-    ],
-    // pytest
-    "python.testing.pytestEnabled": true,
-    "python.testing.pytestArgs": [
-        "test"
-    ],
+    "java.format.enabled": true,
+    "java.format.onType.enabled": true,
+    // Java convention formatting
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.format.settings.profile": "JavaConventions",
+    // Google style formatting
+    // see https://code.visualstudio.com/docs/java/java-linting#_formatter
+    // "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    // "java.format.settings.profile": "GoogleStyle",
     //
-    "coverage-gutters.showLineCoverage": true,
-    "coverage-gutters.showGutterCoverage": true,
-    // "coverage-gutters.showRulerCoverage": true,
 }

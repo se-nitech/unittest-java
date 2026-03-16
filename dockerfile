@@ -1,6 +1,3 @@
-FROM python:slim
-
-RUN apt -y update && apt -y install git
-RUN pip install pytest coverage
+FROM maven:3.9-eclipse-temurin-21
 
 WORKDIR /mnt

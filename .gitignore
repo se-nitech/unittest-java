@@ -1,5 +1,7 @@
-__pycache__/
-*.pyc
-htmlcov/
-.coverage
-coverage.xml
+target/
+*.class
+.classpath
+.project
+.settings/
+.idea/
+*.iml

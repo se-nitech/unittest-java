@@ -1,46 +1,38 @@
-# unittestのサンプル
+# Java版 unittest サンプル
 
-起動
+準備
 
 ```bash
 docker compose build
-docker compose up -d
 ```
 
-assertを用いたテスト
+テスト実行（JUnit + Mockito）
 
 ```bash
-docker compose exec mypython python assert_add.py
+docker compose run --rm myjava mvn test
 ```
 
-unittestを用いたユニットテスト
+カバレッジレポート（JaCoCo）
 
 ```bash
-docker compose exec mypython python -m test_add
-docker compose exec mypython python -m unittest test_add.py
+docker compose run --rm myjava mvn verify
 ```
 
-カバレッジの計算
+レポート出力先:
+
+- `target/site/jacoco/index.html`
+
+CLI実行（add / mult）
 
 ```bash
-docker compose exec mypython python -m unittest test_add_final.py
-docker compose exec mypython coverage run test_add_final.py
-docker compose exec mypython coverage report
-docker compose exec mypython coverage html
-docker compose exec mypython coverage xml
+docker compose run --rm myjava mvn -q exec:java -Dexec.mainClass=unittestjava.Main -Dexec.args="2 6 add"
+docker compose run --rm myjava mvn -q exec:java -Dexec.mainClass=unittestjava.Main -Dexec.args="2 6 mult"
 ```
 
-テストスイートの実行
+assertサンプル実行（`-ea` を有効化）
 
 ```bash
-docker compose exec mypython coverage run test_compute.py
-```
-
-pytestを用いたユニットテスト
-
-```bash
-docker compose exec mypython pytest test/test_compute1.py
-docker compose exec mypython pytest test/test_compute2.py
+docker compose run --rm myjava mvn -q exec:java -Dexec.mainClass=unittestjava.AssertAdd -Dexec.jvmArgs="-ea"
 ```
 
 停止
