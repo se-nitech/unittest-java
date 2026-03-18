@@ -15,6 +15,7 @@
         <junit.version>5.12.2</junit.version>
         <mockito.version>5.23.0</mockito.version>
         <jacoco.version>0.8.14</jacoco.version>
+        <argLine/>
     </properties>
 
     <dependencies>
@@ -42,13 +43,43 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-mockito-agent</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.mockito</groupId>
+                                    <artifactId>mockito-core</artifactId>
+                                    <version>${mockito.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>${project.build.directory}/java-agents</outputDirectory>
+                                    <destFileName>mockito-core-agent.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>mockito-properties</id>
+                        <goals>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.2</version>
                 <configuration>
-                    <argLine>
-                        @{argLine}
-                        -Xshare:off
-                        -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar</argLine>
+                    <argLine>@{argLine} -Xshare:off -javaagent:${project.build.directory}/java-agents/mockito-core-agent.jar</argLine>
                 </configuration>
             </plugin>
             <plugin>

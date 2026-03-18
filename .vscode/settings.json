@@ -22,6 +22,17 @@
     // Java convention formatting
     "java.format.settings.url": ".vscode/java-formatter.xml",
     "java.format.settings.profile": "JavaConventions",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.test.config": [
+        {
+            "name": "with-mockito-agent",
+            "vmArgs": [
+                "-Xshare:off",
+                "-javaagent:${workspaceFolder}/target/java-agents/mockito-core-agent.jar"
+            ]
+        }
+    ],
+    "java.test.defaultConfig": "with-mockito-agent",
     // Google style formatting
     // see https://code.visualstudio.com/docs/java/java-linting#_formatter
     // "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
